@@ -19,8 +19,122 @@ Operation
 */
 #include <string>
 /*      朴素模式匹配     */
-int Index( s,String f,int pos)
+using namespace std;
+int Index(string s,string T,int pos)
 {
+    int i = pos;
+    int j = 1;
+    while(i<=s.length&&j<=T.length)
+    {
+        if (s[i] == T[j])
+        {
+            ++i;
+            ++j;
+            /* code */
+        }
+        else
+        {
+            i = i - j + 2;
+            j = 1;
+        }
+        
+    }
+    if (j > T[0])
+    {
+        return i - T[0];
+        
+        /* code */
+    }else
+    {
+        return 0;
+    }
     
-
+    
 }
+
+//******************KMP算法*************************/
+void get_next(string T,int *next)
+{
+    int i,j;
+    i = 1;
+    j = 0;
+    next[1] = 0;
+    while (i<T.length)
+    {
+        if (j==0||T[i]==T[j])
+        {
+            ++i;
+            ++j;
+            next[i] = j;
+
+            /* code */
+        }else
+        {
+            j = next[j];
+        }
+        
+        
+    }
+    
+}
+
+int Index_KMP(string S,string T,int pos)
+{
+    int i = pos;
+    int j = 1;
+    int next[255];
+    get_next(T, next);
+    while (i<=S.length&&j<=T.length)
+    {
+        if(j==0||S[i]==T[j])
+        {
+            ++i;
+            ++j;
+        }
+        else
+        {
+            j = next[j];
+        }
+        
+    }
+    if(j>T.length)
+    {
+        return i - T.length;
+    }else
+    {
+        return 0;
+    }
+    
+    
+}
+
+void getnext_val(string T,int *nextval)
+{
+    int i, j;
+    i = 1;
+    j = 0;
+    nextval[1] = 0;
+    while (i<T[0])
+    {
+        if(j==0||T[i]==T[j])
+        {
+            ++i;
+            ++j;
+            if(T[i]!=T[j])
+            {
+                nextval[i] = j;
+            }else
+            {
+                nextval[i] = nextval[j];
+            }
+            
+        }
+        else
+        {
+            j = nextval[j];
+        }
+        
+    }
+    
+}
+
