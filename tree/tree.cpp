@@ -43,9 +43,24 @@ typedef struct
 }PTree;
 
 /*
- * 
+ * 孩子表示法
+ * 每个结点的孩子结点排列起来，以单链表作为储存结构，则n个结点有n个孩子链表，若是叶子结点则此单链表为空，然后n个头指针有组成一个线性表，采用顺序储存结构
  * */
-
+typedef struct CTNode//孩子结点
+{
+    int child;
+    struct CTNode *next;
+}*ChildPtr;
+typedef struct //表头结构
+{
+    int data;
+    ChildPtr firstchild;
+}CTBox;
+typedef struct//树结构
+{
+    CTBox node[maxSize];//结点数组
+    int r,n;//根结点以及结点数
+}CTree;
 
 typedef struct TreeNode
 {
