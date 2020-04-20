@@ -1,0 +1,19 @@
+{
+    "files.defaultLanguage": "c++",
+    "editor.formatOnType": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        
+    },
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.preserveFocus": true,
+    "code-runner.clearPreviousOutput": false,
+    "code-runner.ignoreSelection": true,
+    "C_Cpp.clang_format_sortIncludes": true,
+
+}
